@@ -1,0 +1,22 @@
+{
+  "name": "udacity-fend-p6-mobile-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnlaine1/udacity-fend-p6-mobile-portfolio.git"
+  },
+  "author": "John Laine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnlaine1/udacity-fend-p6-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/johnlaine1/udacity-fend-p6-mobile-portfolio#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}
