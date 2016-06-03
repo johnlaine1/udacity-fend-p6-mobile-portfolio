@@ -2,7 +2,7 @@
   "name": "udacity-fend-p6-mobile-portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.html",
+  "main": "app/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +16,12 @@
     "url": "https://github.com/johnlaine1/udacity-fend-p6-mobile-portfolio/issues"
   },
   "homepage": "https://github.com/johnlaine1/udacity-fend-p6-mobile-portfolio#readme",
-  "dependencies": {
-    "gulp": "^3.9.1"
+  "devDependencies": {
+    "browser-sync": "^2.12.10",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.9",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"
   }
 }
