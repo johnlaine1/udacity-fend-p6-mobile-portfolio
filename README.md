@@ -4,6 +4,10 @@
 
 ## How to run the application
 
+Clone project
+
+Run `npm install` to install needed packages
+
 
 ### Optimizations Performed in the `views/js/main.js` file
 
