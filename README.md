@@ -8,6 +8,8 @@ Clone project
 
 Run `npm install` to install needed packages
 
+Port is currently set to 8000, if you need to change this...
+
 
 ### Optimizations Performed in the `views/js/main.js` file
 
