@@ -32,6 +32,6 @@ to keep the code DRY.
   * Mobile: 27/100
   * Desktop: 29/100
 
-#### Final
-* Mobile: 95/100
-* Desktop: 97/100
+* Final
+  * Mobile: 95/100
+  * Desktop: 97/100
