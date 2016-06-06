@@ -494,10 +494,12 @@ function updatePositions() {
   var items = document.querySelectorAll('.mover');
   var phase = [];
   
+  // First we get all the data we need.
   for (var i = 0; i < items.length; i++) {
     phase.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
   }
   
+  // Then we update styles all in one shot.
   for (var j = 0; j < items.length; j++) {
     items[j].style.left = items[j].basicLeft + 100 * phase[j] + 'px';
   }
@@ -522,12 +524,13 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "/dist/views/project-pizza/images/pizza.png";
+    elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+  
   updatePositions();
 });

@@ -2,54 +2,77 @@
 
 // Load our dependencies.
 var gulp = require('gulp');
-var plug = require('gulp-load-plugins')();
+var htmlMin = require('gulp-htmlmin');
+var uglify = require('gulp-uglify');
+var cleanCss = require('gulp-clean-css');
+var imageMin = require('gulp-imagemin');
 var browserSync = require('browser-sync');
+var runSequence = require('run-sequence');
+var del = require('del');
 var reload = browserSync.reload;
 
 // Minify HTML
 gulp.task('html-min', function() {
-  return gulp.src(['app/**/**/*.html'])
-    .pipe(plug.htmlmin({collapseWhitespace: true}))
-    .pipe(plug.rename({suffix: '.min'}))
+  return gulp.src(['src/**/*.html'])
+    .pipe(htmlMin({collapseWhitespace: true}))
     .pipe(gulp.dest('dist'))
 });
 
-// Minify JS.
+// Minify JS
 gulp.task('js-min', function() {
-  return gulp.src(['app/**/**/**/*.js'])
-    .pipe(plug.uglify())
-    .pipe(plug.rename({suffix: '.min'}))
+  return gulp.src(['src/**/*.js'])
+    .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 
-// Minify CSS.
+// Minify CSS
 gulp.task('css-min', function() {
-  return gulp.src(['app/**/**/**/*.css'])
-    .pipe(plug.cleanCss())
-    .pipe(plug.rename({suffix: '.min'}))
+  return gulp.src(['src/**/*.css'])
+    .pipe(cleanCss())
     .pipe(gulp.dest('dist'));
 });
 
 // Optimize images
 gulp.task('images', function() {
-  return gulp.src(['app/**/**/**/*.+(png|jpg|gif|svg)'])
-    .pipe(plug.imagemin())
+  return gulp.src(['src/**/*.+(png|jpg|gif|svg)'])
+    .pipe(imageMin())
     .pipe(gulp.dest('dist'));
 });
 
-// Start the server and watch for file changes.
-gulp.task('serve', ['js-min', 'css-min', 'html-min', 'images', 'browserSync'], function() {
-  gulp.watch(['app/**/**/**/*.js'], ['js-min', reload]);
-  gulp.watch(['app/**/**/**/*.css'], ['css-min', reload]);
-  gulp.watch(['index.html', 'app/**/**/*.html'], ['html-min', reload]);
+// Set files to watch for updates
+gulp.task('watch', function() {
+  gulp.watch(['src/**/*.js'], ['js-min', reload]);
+  gulp.watch(['src/**/*.css'], ['css-min', reload]);
+  gulp.watch(['src/**/*.html'], ['html-min', reload]); 
 });
 
-// Server configuration.
-gulp.task('browserSync', function() {
+// Start the server with src files.
+gulp.task('serve:src', ['default'], function() {
   browserSync({
     port: 8080,
     server: {
-      baseDir: ''
+      baseDir: 'src'
     }
   });
+});
+
+// Start the server with dist files.
+gulp.task('serve:dist', ['default'], function() {
+  browserSync({
+    port: 8080,
+    server: {
+      baseDir: 'dist'
+    }
+  });
+});
+
+// The default gulp task.
+// Build production files into the 'dist' directory.
+gulp.task('default', function() {
+  runSequence('clean', 'images', 'js-min', 'css-min', 'html-min', 'watch');
+});
+
+// Clean output directory.
+gulp.task('clean', function() {
+  return del(['dist/*', '!dist/.git']);
 });
