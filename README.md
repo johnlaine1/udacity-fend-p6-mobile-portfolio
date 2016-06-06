@@ -35,3 +35,14 @@ to keep the code DRY.
 * Final
   * Mobile: 95/100
   * Desktop: 97/100
+
+## Revisions from reviewer suggestions
+1. Add `'use strict';` to all js files.
+2. Use `document.getElementById()` instead of `document.querySelector()` where applicable in `main.js`.
+3. Use `document.getElementsByClassName()` instead of `document.querySelectorAll()` where applicable in `main.js`.
+4. Line 449 and line 505 in `main.js` save the array length property to a variable so the value does not have to be accessed from the array during each iteration of the for loop.
+5. Line 469 in `main.js`, declare pizzasDiv outside of the loop so there is only one DOM call.
+6. Line 533 in `main.js`, update the callback function to calculate the max number of rows needed and threfore max number of pizzas needed, based on the height of the screen.
+7. Line 536 in `main.js`, move the `elem` declaration outside of the loop.
+8. Line 537 in `main.js`, create a variable to store the DOM element outside of the for loop.
+9. Line 36 in `style.css`, add the `transform: translateZ(0)` and `backface-visibility: hidden` properties, also add vendor prefixes.
