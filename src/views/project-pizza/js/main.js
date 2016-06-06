@@ -494,15 +494,19 @@ function updatePositions() {
   var items = document.querySelectorAll('.mover');
   var phase = [];
   
-  // First we get all the data we need.
   for (var i = 0; i < items.length; i++) {
     phase.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
   }
   
-  // Then we update styles all in one shot.
-  for (var j = 0; j < items.length; j++) {
-    items[j].style.left = items[j].basicLeft + 100 * phase[j] + 'px';
+  // Update all the styles at one time.
+  function updateAllStyles() {
+    for (var j = 0; j < items.length; j++) {
+      items[j].style.left = items[j].basicLeft + 100 * phase[j] + 'px';
+    }
   }
+  
+  // Update all styles at one time and let the browser decide on the best timing.
+  window.requestAnimationFrame(updateAllStyles);
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.

@@ -18,6 +18,7 @@
    * Broke up the single for loop which was both checking and setting a value in the 
 DOM into 2 loops. 1 to check and store values and the other to set all the values
 at once, thereby avoiding forced synchronous layouts or layout thrashing.
+   * Wrap the second loop in a function `updateStyles()` and call it using `requestAnimationFrame()`
 
 2. Updated the  `changePizzaSizes()` function.
    * Create a variable to store: document.querySelectorAll(".randomPizzaContainer")
