@@ -10,6 +10,7 @@ var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var del = require('del');
 var reload = browserSync.reload;
+var port = 8080;
 
 // Minify HTML
 gulp.task('html-min', function() {
@@ -47,9 +48,9 @@ gulp.task('watch', function() {
 });
 
 // Start the server with src files.
-gulp.task('serve:src', ['default'], function() {
+gulp.task('serve:src', ['default', 'watch'], function() {
   browserSync({
-    port: 8080,
+    port: port,
     server: {
       baseDir: 'src'
     }
@@ -57,9 +58,9 @@ gulp.task('serve:src', ['default'], function() {
 });
 
 // Start the server with dist files.
-gulp.task('serve:dist', ['default'], function() {
+gulp.task('serve:dist', ['default', 'watch'], function() {
   browserSync({
-    port: 8080,
+    port: port,
     server: {
       baseDir: 'dist'
     }
@@ -68,8 +69,8 @@ gulp.task('serve:dist', ['default'], function() {
 
 // The default gulp task.
 // Build production files into the 'dist' directory.
-gulp.task('default', function() {
-  runSequence('clean', 'images', 'js-min', 'css-min', 'html-min', 'watch');
+gulp.task('default', ['clean'], function() {
+  runSequence('images', 'js-min', 'css-min', 'html-min');
 });
 
 // Clean output directory.
