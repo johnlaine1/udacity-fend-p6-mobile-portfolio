@@ -25,6 +25,7 @@ at once, thereby avoiding forced synchronous layouts or layout thrashing.
 to keep the code DRY.
    * Refactor and simplify to no longer need the determineDx function.
    * Remove determineDx function as it is no longer needed.
+   * Add a function `changeSize()` to hold the code that makes style changes and call this function with requestAnimationFrame to allow the browser to decide when to execute.
 
 ## Page speed results for index.html
 * Initial
