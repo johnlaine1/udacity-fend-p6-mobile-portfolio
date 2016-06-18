@@ -500,21 +500,18 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover');
+  var scrollTop = document.body.scrollTop;
   var phase = [];
-  
+   
   for (var i = 0, len = items.length; i < len; i++) {
-    phase.push(Math.sin((document.body.scrollTop / 1250) + (i % 5)));
+    phase.push(Math.sin((scrollTop / 1250) + (i % 5)));
   }
   
   // Update all the styles at one time.
-  function updateAllStyles() {
-    for (var j = 0; j < items.length; j++) {
-      items[j].style.left = items[j].basicLeft + 100 * phase[j] + 'px';
-    }
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.left = items[i].basicLeft + 100 * phase[i] + 'px';
   }
-  
-  // Update all styles at one time and let the browser decide on the best timing.
-  window.requestAnimationFrame(updateAllStyles);
+
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
