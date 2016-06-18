@@ -8,7 +8,7 @@
 2. Run `npm install` from the command line to install needed packages.
 3. run `gulp` from the command line to build the application into the `/dist` directory.
 4. Point your webserver to the `/dist/index.html` file.
-5. You can also run `serve:dist` from the command line, after cloning and running `npm install`, to build the app and start a webserver on port 8080.
+5. You can also run `gulp serve:dist` from the command line, after cloning and running `npm install`, to build the app and start a webserver on port 8080.
 
 
 
